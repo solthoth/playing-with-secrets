@@ -6,6 +6,8 @@ This is a sample project used to explore using [dotnet user secrets](https://doc
 ## Prerequisits
 
 * Docker & Docker-Compose
+* RapidApi Account
+    * Subscription to [Weather By Zipcode API](https://rapidapi.com/interzoid/api/us-weather-by-zip-code)
 
 ## Running the project
 
