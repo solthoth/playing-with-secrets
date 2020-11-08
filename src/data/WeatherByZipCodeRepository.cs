@@ -13,10 +13,10 @@ namespace playing_with_secrets.data
 
     public class WeatherByZipCodeRepository : IWeatherByZipCodeRepository
     {
-        private readonly RapidApiContext context;
-        public WeatherByZipCodeRepository(IOptions<RapidApiContext> options)
+        private readonly IRapidApiOptions context;
+        public WeatherByZipCodeRepository(IRapidApiOptions options)
         {
-            context = options.Value;
+            context = options;
         }
 
         public Task<WeatherByZipCode> GetByZipCode(string zipcode) =>

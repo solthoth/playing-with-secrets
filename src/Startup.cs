@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using playing_with_secrets.data;
+using System;
+using Vault;
 
 namespace playing_with_secrets
 {
@@ -19,7 +22,11 @@ namespace playing_with_secrets
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<RapidApiContext>(options => Configuration.GetSection("RapidApiContext").Bind(options));
+            services.AddVault(options => Configuration.GetSection(nameof(VaultOptions)).Bind(options));
+            services.Configure<RapidApiContext>(Configuration.GetSection(nameof(RapidApiContext)));
+            services.AddSingleton<IRapidApiSecrets, RapidApiSecrets>();
+            services.AddSingleton<IRapidApiOptions, RapidApiOptions>();
+            services.AddSingleton<ISecretsRepository, SecretsRepository>();
             services.AddSingleton<IWeatherByZipCodeRepository, WeatherByZipCodeRepository>();
             services.AddControllers();
             services.AddSwaggerGen();
