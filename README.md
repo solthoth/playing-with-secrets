@@ -3,7 +3,7 @@
 ## Overview
 This is a sample project used to explore using [dotnet user secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) as well as [Vault](https://www.vaultproject.io/)
 
-## Prerequisits
+## Prerequisites
 
 * Docker & Docker-Compose
 * RapidApi Account
